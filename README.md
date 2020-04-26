@@ -1,5 +1,5 @@
 # Accelerated Computer Science Fundamentals Example Code
-
+# IN PROGRESS
 This example code is meant to accompany the following online course sequence:
 
 https://www.coursera.org/specializations/cs-fundamentals
