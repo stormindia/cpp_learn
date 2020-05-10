@@ -54,6 +54,7 @@ $(EXE): $(patsubst %.o, $(OBJS_DIR)/%.o, $(OBJS))
 $(OBJS_DIR):
 	@mkdir -p $(OBJS_DIR)
 	@mkdir -p $(OBJS_DIR)/uiuc
+	@mkdir -p $(OBJS_DIR)/my_cube
 
 # Rules for compiling source code.
 # - Every object file is required by $(EXE)
@@ -65,6 +66,7 @@ $(OBJS_DIR)/%.o: %.cpp | $(OBJS_DIR)
 # generated .d files (from $(DEPFILE_FLAGS)):
 -include $(OBJS_DIR)/*.d
 -include $(OBJS_DIR)/uiuc/*.d
+-include $(OBJS_DIR)/my_cube/*.d
 
 
 # Standard C++ Makefile rules:
