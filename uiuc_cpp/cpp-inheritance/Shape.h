@@ -1,11 +1,11 @@
 #pragma once  //Lets this .h file to be compiled only once
 class Shape {
   public:
-    double getVolume();
-    double getSurfaceArea();
-    void setLength(double length);
+    Shape();
+    Shape(double width);	
+    double getWidth() const;
 
   private:
-    double length_;      
+    double width_;      
 };
 
