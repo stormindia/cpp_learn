@@ -67,8 +67,23 @@ PNG grayscale(PNG image) {
  * @return The image with a spotlight.
  */
 PNG createSpotlight(PNG image, int centerX, int centerY) {
+   double dist;
+    for (unsigned x = 0; x < image.width(); x++) {
+    for (unsigned y = 0; y < image.height(); y++) {
+      HSLAPixel & pixel = image.getPixel(x, y);
+      int dist_x = labs(x - centerX);
+      int dist_y = labs(y - centerY);
+      double dist = sqrt(pow(dist_x,2) + pow(dist_y,2));
 
-  return image;
+      if (dist > 160){
+	pixel.l = pixel.l * 0.2;
+      }
+      else{
+        pixel.l = pixel.l * (1 - (0.005 * dist));
+      }
+  }
+ }
+ return image;
   
 }
  
@@ -84,7 +99,32 @@ PNG createSpotlight(PNG image, int centerX, int centerY) {
  * @return The illinify'd image.
 **/
 PNG illinify(PNG image) {
-
+ for (unsigned x = 0; x < image.width(); x++) {
+    for (unsigned y = 0; y < image.height(); y++) {
+      HSLAPixel & pixel = image.getPixel(x, y);
+      unsigned dist_11 = 0;
+      unsigned dist_216 = 0;
+      
+      if(pixel.h>11 && pixel.h<216){ //h between 11 and 216
+         dist_11 = pixel.h - 11;
+	 dist_216 = 216 - pixel.h;
+      }
+      else if(pixel.h>=216){ //h wraps around after 360 so we use 360+11=371
+	dist_11 = 371 - pixel.h;
+	dist_216 = pixel.h - 216;
+      }
+      else if(pixel.h >= 0 && pixel.h <= 11){  //last section (0~11) should also be covered
+         pixel.h = 11;
+      }
+      
+      if(dist_11>dist_216){
+        pixel.h = 216;
+      }
+      else{
+	pixel.h = 11;
+      }
+    }
+ }
   return image;
 }
  
@@ -102,6 +142,15 @@ PNG illinify(PNG image) {
 * @return The watermarked image.
 */
 PNG watermark(PNG firstImage, PNG secondImage) {
-
+    for (unsigned x = 0; x < secondImage.width(); x++) {
+     for (unsigned y = 0; y < secondImage.height(); y++) {
+       HSLAPixel & pixelFirst = firstImage.getPixel(x, y);
+       HSLAPixel & pixelSecond = secondImage.getPixel(x, y);
+       if(pixelSecond.l == 1.0){
+	if(pixelFirst.l >= 0.8){ pixelFirst.l = 1.0;  }
+        else { pixelFirst.l += 0.2; }
+	}
+     }
+   }
   return firstImage;
 }
