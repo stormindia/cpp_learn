@@ -4,7 +4,7 @@ To get started, create some files, play with the terminal, or visit https://docs
 
 Happy coding!
 
-cpp_learn
+cpp_learn --> COMPLETED
 
 Accelerated Computer Science Fundamentals Example Code
 This example code is meant to accompany the following online course sequence:
