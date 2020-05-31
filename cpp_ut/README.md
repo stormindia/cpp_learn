@@ -1,7 +1,6 @@
 Learning Unit testing in CPP
 <br />
 References ->
-
 <br />
 Build ->
 <br />
