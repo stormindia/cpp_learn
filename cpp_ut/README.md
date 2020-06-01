@@ -5,7 +5,9 @@ References ->
 <br />
 Build ->
 <br />
-https://www.eriksmistad.no/getting-started-with-google-test-on-ubuntu/
+googleTest -> https://www.eriksmistad.no/getting-started-with-google-test-on-ubuntu/
+<br />
+googleMock -> https://zoomadmin.com/HowToInstall/UbuntuPackage/google-mock
 <br />
 
 Tutorials(in order) ->
